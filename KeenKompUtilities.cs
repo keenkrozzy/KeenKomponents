@@ -27,13 +27,22 @@ namespace KeenKomponents
 		public static float floMaintAdvancedComponentRate = .25f;
 		public static float floMaintActiveMultiplier = 1.5f;
 		public static float floMaintOperatingMultiplier = 1.5f;
-		public static float floUpkeepThreshold = .8f;
+		public static float floUpkeepThreshold = .9f;
 
 		static KeenKompUtilities()
 		{
 			AttachComp();
 			DettachComp();
 			AttachITab();
+
+			List<WorkGiverDef> lstWorkGivers = DefDatabase<WorkGiverDef>.AllDefs.ToList();
+			string str = "WorkGiverDefs:\n";
+			foreach (WorkGiverDef wgd in lstWorkGivers)
+			{
+				str = string.Format("{0}{1}\t{2}\n", str, wgd.defName, wgd.label);
+			}
+			Log.Message(str);
+
 		}
 
 		static void AttachITab()

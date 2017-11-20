@@ -211,7 +211,7 @@ namespace KeenKomponents
 				}
 			}
 
-			Log.Message(str + "Total Materials: " + intTotalMaterials.ToString());
+			//Log.Message(str + "Total Materials: " + intTotalMaterials.ToString());
 		}
 
 		private void AverageWearAndTear()

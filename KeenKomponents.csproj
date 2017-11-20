@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="CompKeenKomponentBreakdownable.cs" />
     <Compile Include="CompProperties_KeenKomponentsBreakdownable.cs" />
+    <Compile Include="Initialize.cs" />
     <Compile Include="ITab_KeenKomp_Details.cs" />
     <Compile Include="JobDriver_Upkeep.cs" />
     <Compile Include="KeenKompUtilities.cs" />
