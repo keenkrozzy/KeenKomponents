@@ -22,7 +22,7 @@ namespace KeenKomponents
 		{
 			get
 			{
-				List<CompKeenKomponentBreakdownable> lstNeedUpkeep = comps.Where(x => x.FloDurability < KeenKompUtilities.floMaxDurability).ToList();
+				List<CompKeenKomponentBreakdownable> lstNeedUpkeep = comps.Where(x => x.FloDurabilityPercent < KeenKompUtilities.floUpkeepThreshold).ToList();
 				return lstNeedUpkeep.Select(x => x.parent).Cast<Thing>();
 			}
 		}

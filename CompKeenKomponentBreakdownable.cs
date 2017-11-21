@@ -169,7 +169,7 @@ namespace KeenKomponents
 
 		public void DoBreakdown()
 		{
-			isBroke = true;
+			isBroke = true;			
 			parent.BroadcastCompSignal("Breakdown");
 			parent.Map.GetComponent<MapComponent_KeenKomponentStats>().Notify_BrokenDown(parent);
 			if (parent.Faction == Faction.OfPlayer)

@@ -25,6 +25,7 @@ namespace KeenKomponents
 			wgd.gerund = "upkeeping";
 
 			DefDatabase<WorkGiverDef>.Add(wgd);
+			DefDatabase<WorkTypeDef>.GetNamed("Construction").ResolveReferences();
 		}
 	}
 }

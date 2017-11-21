@@ -59,6 +59,7 @@
     <Compile Include="ITab_KeenKomp_Details.cs" />
     <Compile Include="JobDriver_Upkeep.cs" />
     <Compile Include="KeenKompUtilities.cs" />
+    <Compile Include="KeenKomp_Patching.cs" />
     <Compile Include="KeenKomp_Upkeep.cs" />
     <Compile Include="MapComponent_KeenKomponentStats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
