@@ -34,9 +34,6 @@
     <Reference Include="0Harmony">
       <HintPath>..\Resources\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="0Reloader">
-      <HintPath>..\Resources\0Reloader.dll</HintPath>
-    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Resources\RimWorld\KeenKomponents_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
@@ -60,6 +57,7 @@
     <Compile Include="JobDriver_Upkeep.cs" />
     <Compile Include="KeenKompUtilities.cs" />
     <Compile Include="KeenKomp_Patching.cs" />
+    <Compile Include="KeenKomp_Settings.cs" />
     <Compile Include="KeenKomp_Upkeep.cs" />
     <Compile Include="MapComponent_KeenKomponentStats.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -34,12 +34,12 @@ namespace KeenKomponents
 			}
 			set
 			{
-				floDurability += value;
-				if (floDurability > KeenKompUtilities.floMaxDurability)
+				floDurability = value;
+				if (floDurability > KeenKomp_Settings.floMaxDurability)
 				{
-					floDurability = KeenKompUtilities.floMaxDurability;
+					floDurability = KeenKomp_Settings.floMaxDurability;
 				}
-				floDurabilityPercent = floDurability / KeenKompUtilities.floMaxDurability;
+				floDurabilityPercent = floDurability / KeenKomp_Settings.floMaxDurability;
 			}
 		}
 
@@ -61,7 +61,7 @@ namespace KeenKomponents
 
 		public CompKeenKomponentBreakdownable()
 		{
-			floDurability = KeenKompUtilities.floMaxDurability;
+			floDurability = KeenKomp_Settings.floMaxDurability;
 		}
 
 		public override void PostExposeData()
@@ -86,7 +86,7 @@ namespace KeenKomponents
 			parent.Map.GetComponent<MapComponent_KeenKomponentStats>().Register(this);
 			PopulateStuff(parent.def.costList);
 			AverageWearAndTear();
-			floDurabilityPercent = floDurability / KeenKompUtilities.floMaxDurability;
+			floDurabilityPercent = floDurability / KeenKomp_Settings.floMaxDurability;
 		}
 
 		public override void PostDeSpawn(Map map)
@@ -95,9 +95,24 @@ namespace KeenKomponents
 			map.GetComponent<MapComponent_KeenKomponentStats>().Deregister(this);
 		}
 
+		public void MinusFivePercent()
+		{
+			if (floDurability > 0)
+			{
+				floDurability -= KeenKomp_Settings.floMaxDurability * .05f;
+			}
+
+			if (floDurability < 0)
+			{
+				floDurability = 0;
+			}
+
+			floDurabilityPercent = floDurability / KeenKomp_Settings.floMaxDurability;
+		}
+
 		public void CheckForBreakdown()
 		{
-			floDurabilityPercent = floDurability / KeenKompUtilities.floMaxDurability;
+			floDurabilityPercent = floDurability / KeenKomp_Settings.floMaxDurability;
 
 			//Log.Message("CompKeenKomponentBreakdownable.CheckForBreakdown: " + parent.def.label + " durability at " + floDurabilityPercent.ToStringPercent() + ", MaterialWearPerTick at "
 			//	+ floMaterialWearPerTick.ToString());
@@ -159,7 +174,7 @@ namespace KeenKomponents
 		public void Notify_Repaired()
 		{
 			isBroke = false;
-			floDurability = KeenKompUtilities.floMaxDurability;
+			floDurability = KeenKomp_Settings.floMaxDurability;
 			parent.Map.GetComponent<MapComponent_KeenKomponentStats>().Notify_Repaired(parent);
 			if (parent is Building_PowerSwitch)
 			{
@@ -221,22 +236,22 @@ namespace KeenKomponents
 				switch (pair.Key)
 				{
 					case "wood":
-						floMaterialWearPerTick += pair.Value * KeenKompUtilities.floMaintWoodRate;
+						floMaterialWearPerTick += pair.Value * KeenKomp_Settings.floMaintWoodRate;
 						break;
 					case "steel":
-						floMaterialWearPerTick += pair.Value * KeenKompUtilities.floMaintSteelRate;
+						floMaterialWearPerTick += pair.Value * KeenKomp_Settings.floMaintSteelRate;
 						break;
 					case "plasteel":
-						floMaterialWearPerTick += pair.Value * KeenKompUtilities.floMaintPlasteelRate;
+						floMaterialWearPerTick += pair.Value * KeenKomp_Settings.floMaintPlasteelRate;
 						break;
 					case "silver":
-						floMaterialWearPerTick += pair.Value * KeenKompUtilities.floMaintSilverRate;
+						floMaterialWearPerTick += pair.Value * KeenKomp_Settings.floMaintSilverRate;
 						break;
 					case "gold":
-						floMaterialWearPerTick += pair.Value * KeenKompUtilities.floMaintGoldRate;
+						floMaterialWearPerTick += pair.Value * KeenKomp_Settings.floMaintGoldRate;
 						break;
 					case "uranium":
-						floMaterialWearPerTick += pair.Value * KeenKompUtilities.floMaintUraniumRate;
+						floMaterialWearPerTick += pair.Value * KeenKomp_Settings.floMaintUraniumRate;
 						break;
 				}
 			}
@@ -245,12 +260,12 @@ namespace KeenKomponents
 
 			if (materials.TryGetValue("component", out int v1))
 			{
-				floMaterialWearPerTick += v1 * KeenKompUtilities.floMaintComponentRate;
+				floMaterialWearPerTick += v1 * KeenKomp_Settings.floMaintComponentRate;
 			}
 
 			if (materials.TryGetValue("advanced component", out int v2))
 			{
-				floMaterialWearPerTick += v2 * KeenKompUtilities.floMaintAdvancedComponentRate;
+				floMaterialWearPerTick += v2 * KeenKomp_Settings.floMaintAdvancedComponentRate;
 			}
 		}
 

@@ -15,34 +15,25 @@ namespace KeenKomponents
 	public static class KeenKompUtilities
 	{
 		public static List<ThingDef> lstThingsWithPower = DefDatabase<ThingDef>.AllDefs.Where(x => x.ConnectToPower == true || x.EverTransmitsPower == true).ToList();
-		public static float floMaxDurability = 27702f;
-		public static float floMaintWoodRate = 3f;
+		//public static float floMaxDurability = 27702f;
+		//public static float floMaintWoodRate = 3f;
 		//public static float floMaintSteelRate = 1f;
-		public static float floMaintSteelRate = 20f;
-		public static float floMaintPlasteelRate = .5f;
-		public static float floMaintSilverRate = 1.4f;
-		public static float floMaintGoldRate = 1.8f;
-		public static float floMaintUraniumRate = .1f;
-		public static float floMaintComponentRate = .5f;
-		public static float floMaintAdvancedComponentRate = .25f;
-		public static float floMaintActiveMultiplier = 1.5f;
-		public static float floMaintOperatingMultiplier = 1.5f;
-		public static float floUpkeepThreshold = .9f;
+		////public static float floMaintSteelRate = 20f;
+		//public static float floMaintPlasteelRate = .5f;
+		//public static float floMaintSilverRate = 1.4f;
+		//public static float floMaintGoldRate = 1.8f;
+		//public static float floMaintUraniumRate = .1f;
+		//public static float floMaintComponentRate = .5f;
+		//public static float floMaintAdvancedComponentRate = .25f;
+		//public static float floMaintActiveMultiplier = 1.5f;
+		//public static float floMaintOperatingMultiplier = 1.5f;
+		//public static float floUpkeepThreshold = .5f;
 
 		static KeenKompUtilities()
 		{
 			AttachComp();
 			DettachComp();
 			AttachITab();
-
-			List<WorkGiverDef> lstWorkGivers = DefDatabase<WorkGiverDef>.AllDefs.ToList();
-			string str = "WorkGiverDefs:\n";
-			foreach (WorkGiverDef wgd in lstWorkGivers)
-			{
-				str = string.Format("{0}{1}\t{2}\n", str, wgd.defName, wgd.label);
-			}
-			Log.Message(str);
-
 		}
 
 		static void AttachITab()

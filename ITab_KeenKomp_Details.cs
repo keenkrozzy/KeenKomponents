@@ -14,7 +14,7 @@ namespace KeenKomponents
 	public class ITab_KeenKomp_Details : ITab
 	{
 		private float floBorderPadding = 25f;
-		private float floMaxDurability = KeenKompUtilities.floMaxDurability;
+		private float floMaxDurability = KeenKomp_Settings.floMaxDurability;
 		private static Texture2D texFullBar = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.2f, 0.24f));
 		private static Texture2D EmptyBarTex = SolidColorMaterials.NewSolidColorTexture(Color.clear);
 
@@ -53,7 +53,7 @@ namespace KeenKomponents
 		private float GetDLPD()
 		{
 			float x = GetThing().TryGetComp<CompKeenKomponentBreakdownable>().FloMaterialWearPerTick;
-			return (x * 57.637f) / KeenKompUtilities.floMaxDurability;
+			return (x * 57.637f) / KeenKomp_Settings.floMaxDurability;
 		}
 
 		private string GetBreakdownChanceString()
@@ -86,7 +86,6 @@ namespace KeenKomponents
 			}
 		}
 
-		[Reloader.ReloadMethod]
 		protected override void FillTab()
 		{
 			string strName = GetThing().LabelCap;
@@ -127,6 +126,17 @@ namespace KeenKomponents
 			Widgets.Label(rectDurability.Rounded(), strDurabilityPercent);
 			Text.Anchor = TextAnchor.UpperLeft;
 			Widgets.Label(rectBreakdownChance.Rounded(), strBreakdownChance);
+
+			if (Prefs.DevMode)
+			{
+				string strMinusDurability = "(DevMode) -5% Durability";
+				Vector2 vecMinusDurability = Text.CalcSize(strMinusDurability);
+				size.y += vecMinusDurability.y * 1.8f;
+				if (Widgets.ButtonText(new Rect(floBorderPadding, rectBreakdownChance.y + rectBreakdownChance.height, vecMinusDurability.x * 1.2f, vecMinusDurability.y * 1.8f), strMinusDurability))
+				{
+					GetThing().TryGetComp<CompKeenKomponentBreakdownable>().MinusFivePercent();
+				}
+			}
 		}
 	}
 }

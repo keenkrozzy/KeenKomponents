@@ -36,7 +36,7 @@ namespace KeenKomponents
 			}
 			CompKeenKomponentBreakdownable compBreakdownable = ThingCompUtility.TryGetComp<CompKeenKomponentBreakdownable>(thingWithComps);
 
-			return compBreakdownable != null && thing.TryGetComp<CompKeenKomponentBreakdownable>().FloDurability < KeenKompUtilities.floMaxDurability && 
+			return compBreakdownable != null && thing.TryGetComp<CompKeenKomponentBreakdownable>().FloDurability < KeenKomp_Settings.floMaxDurability && 
 				ReservationUtility.CanReserveAndReach(pawn, thing, PathEndMode.Touch, DangerUtility.NormalMaxDanger(pawn), 1, -1, null, forced);
 		}
 
